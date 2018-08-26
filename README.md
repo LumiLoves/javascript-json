@@ -120,7 +120,7 @@ Depth2 기준으로 returnStack.JSONStr을 returnStack.startIndex부터 다시 �
 * 현재는 JSON String 돌면서 print기준으로 String조각을 잘라 넣는데,
 	* 변경하고 싶은 방향은 JSON String 돌면서 실제 오브젝트 객체로 만든 뒤, 마지막에 실제로 변환된 객체를 print 해주기
 * Browser에서 입력을 받고 객체 트리를 만들어 보여주기
-* 테스트 코드 작성
+* 테스트 코드
 * 실제 컴파일러가 하는 방식과 더 가깝게 변환해보고 싶음
 	* (계기: 이 코드를 개발한 이후에 `브라우저의 파싱과정`을 공부하다가, `어휘분석>구문분석` 과정에 대해 읽게 됨)
 	* 현재 코드는 어휘분석(= token추출)과 구문분석(= 문법체크)과정을 명확히 분리하지 않고 한데 섞여서 진행하는데 (parser._parseJSON) 이후에는 이걸 실제 컴파일러랑 좀더 비슷한 과정으로 분리하여 진행해 볼 수 있을까?  
@@ -128,13 +128,7 @@ Depth2 기준으로 returnStack.JSONStr을 returnStack.startIndex부터 다시 �
 	* `"어휘 분석기는 공백과 줄 바꿈 같은 의미 없는 문자를 제거한다."`라는 내용이 있었는데, 내 코드에서는 이걸 제거하는 방법을 토큰을 추출할때는 그대로 놔두고, 문법체크하는 제어문을 만나면 그때 잠시 trim을 이용하여 의미없는 문자를 제거하는 전처리를 한뒤 검사하여 결과를 반환해주기만 했음. 
 	* 이걸 다음에는 token을 추출하는 과정에서 의미없는 문자를 제거하고, 문법체크하는 부분에서는 관여하지 않게 바꾸면 좋겠다 생각함.
 	* 메소드명 구상? analyzeLexicon (어휘분석,낱말분석,token추출), analyzeSyntax (문법체크), tokenizer
-	* ![낱말 분석 위키](https://ko.wikipedia.org/wiki/%EB%82%B1%EB%A7%90_%EB%B6%84%EC%84%9D)
-	* 참고
-		* https://www.google.co.kr/imgres?imgurl=https://image.slidesharecdn.com/lexicalanalysis-160516142825/95/lexical-analysis-compiler-design-8-638.jpg?cb%3D1463408991&imgrefurl=https://www.slideshare.net/afsalashyana/lexical-analysis-compiler-design&h=479&w=638&tbnid=UdrDosrK1_OOQM:&tbnh=150&tbnw=200&usg=__rrStfBpO1vAKAbr-VVgfSCVxrmE%3D&vet=10ahUKEwiD6aXUhM3YAhXJnZQKHe1aBE4Q_B0IjQEwCg..i&docid=ZKYNTgw9yd-tCM&itg=1&sa=X&ved=0ahUKEwiD6aXUhM3YAhXJnZQKHe1aBE4Q_B0IjQEwCg#h=479&imgdii=zcyjc2I990b6xM:&tbnh=150&tbnw=200&vet=10ahUKEwiD6aXUhM3YAhXJnZQKHe1aBE4Q_B0IjQEwCg..i&w=638
-		* https://www.google.co.kr/imgres?imgurl=https://image.slidesharecdn.com/lexicalanalysis-160516142825/95/lexical-analysis-compiler-design-8-638.jpg?cb%3D1463408991&imgrefurl=https://www.slideshare.net/afsalashyana/lexical-analysis-compiler-design&h=479&w=638&tbnid=UdrDosrK1_OOQM:&tbnh=150&tbnw=200&usg=__rrStfBpO1vAKAbr-VVgfSCVxrmE%3D&vet=10ahUKEwiD6aXUhM3YAhXJnZQKHe1aBE4Q_B0IjQEwCg..i&docid=ZKYNTgw9yd-tCM&itg=1&sa=X&ved=0ahUKEwiD6aXUhM3YAhXJnZQKHe1aBE4Q_B0IjQEwCg#h=479&imgdii=UdrDosrK1_OOQM:&tbnh=150&tbnw=200&vet=10ahUKEwiD6aXUhM3YAhXJnZQKHe1aBE4Q_B0IjQEwCg..i&w=638
-
-
-
+* 참고 : [낱말 분석 위키](https://ko.wikipedia.org/wiki/%EB%82%B1%EB%A7%90_%EB%B6%84%EC%84%9D) / [Lexical analysis - Compiler Design](https://www.slideshare.net/afsalashyana/lexical-analysis-compiler-design)
 
 
 
